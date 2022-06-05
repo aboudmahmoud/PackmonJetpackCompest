@@ -301,7 +301,7 @@ fun PockmoneStatus(
     starteValue: Int,
     stateMaxValue: Int,
     stateColor: Color,
-    hight: Dp = 80.dp,
+    hight: Dp = 28.dp,
     animeDirection: Int = 1000,
     animeDelay: Int = 0,
 
@@ -329,6 +329,7 @@ fun PockmoneStatus(
         modifier = Modifier
             .fillMaxWidth()
             .height(hight)
+            .clip(CircleShape)
             .background(
                 if (isSystemInDarkTheme()) {
                     Color(0xFF505050)
@@ -376,7 +377,7 @@ fun PokmoneBaseState(
             fontSize = 20.sp,
             
             color = MaterialTheme.colors.onSurface)
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         for(i in pokemonInfo.stats.indices){
             val state= pokemonInfo.stats[i]
@@ -385,7 +386,7 @@ fun PokmoneBaseState(
                 starteValue = state.base_stat,
                 stateMaxValue = maxballeState,
                 stateColor = parseStatToColor(state),
-                animeDirection = 1000)
+                animeDelay = i * animeDelayPerItem)
 
         }
         Spacer(modifier = Modifier.height(8.dp))
