@@ -141,7 +141,9 @@ fun PackmonList(
         }
         items(itemCount) {
             if (it >= itemCount - 1 && !endReach && !isLoading && !isSeraching) {
-                viewModel.LoadPacmonPaginated()
+                LaunchedEffect(key1 = true){
+                    viewModel.LoadPacmonPaginated() }
+
             }
             PokeDiexRow(rowIndex = it, entries = pokemonList, navController = navController)
         }
